@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 const PLACES = [
@@ -19,9 +18,36 @@ class App extends React.Component {
   render() {
     const activePlace = this.state.activePlace;
     return (
+      
       <div className="App">
+        <nav class="one">
+          <ul>
+            <li class="myname"> Current Weather App </li>
+            <li><a href="https://openweathermap.org/">Origin</a></li>
+            <li><a href="#win1">About</a></li>
+            <li><a href="#win2">Contact</a></li>
+          </ul>
+        </nav>
+
+        {/* Overlay windows */}
+        <a href="#x" class="overlay" id="win1"></a>
+        <div class="popup">
+          Test app with current weather.<br /><br />
+          I did not want to reistall some software, so I used my own hand-written CSS.<br />
+          Actually, this is my first app on JS and React, so it is awful i-i<br /><br />
+          I used API here. Check "Origin".
+        <a class="close"title="Close" href="#close"></a>
+        </div>
+        <a href="#x" class="overlay" id="win2"></a>
+        <div class="popup">
+          Denis Kuivalainen. XAMK student. <a href="kuyvalaynen@gmail.com">kuyvalaynen@gmail.com</a>
+        <a class="close"title="Close" href="#close"></a>
+        </div>
+
+        <div class="content">
+          <div class="content1">
         {PLACES.map((place, index) => (
-          <button
+          <button class="buttons"
             key={index}
             onClick={() => {
               this.setState({ activePlace: index });
@@ -30,10 +56,14 @@ class App extends React.Component {
               {place.name}
           </button>
         ))}
+        </div>
+        <div class="content2">
         <WeatherDisplay
           key={activePlace}
           zip={PLACES[activePlace].zip}
         />
+        </div>
+        </div>
       </div>
     );
   }
