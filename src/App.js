@@ -56,24 +56,23 @@ class WeatherDisplay extends React.Component {
     });
   }
   render() {
-    
     const weatherData = this.state.weatherData;
     if (!weatherData) return <div>Loading...</div>;
-    return <div>{JSON.stringify(weatherData)}</div>;
-    // const weather = weatherData.weather[0];
-    // const iconUrl = "http://openweathermap.org/img/w/" + weather.icon + ".png";
-    // return (
-    //   <div>
-    //    <h1>
-    //      {weather.main} in {weatherData.name}
-    //      <img src={iconUrl} alt={weatherData.description} />
-    //    </h1>
-    //    <p>Current: {weatherData.main.temp}°</p>
-    //     <p>High: {weatherData.main.temp_max}°</p>
-    //    <p>Low: {weatherData.main.temp_min}°</p>
-    //     <p>Wind Speed: {weatherData.wind.speed} mi/hr</p>
-    //  </div>
-    // );
+    // return <div>{JSON.stringify(weatherData)}</div>;
+    const weather = weatherData.weather[0];
+    const iconUrl = "http://openweathermap.org/img/w/" + weather.icon + ".png";
+    return (
+      <div>
+       <h1>
+         {weather.main} in {weatherData.name}
+         <img src={iconUrl} alt={weatherData.description} />
+       </h1>
+       <p>Current: {Math.round((weatherData.main.temp-32)*5/9)}°</p>
+        <p>High: {Math.round((weatherData.main.temp_max-32)*5/9)}°</p>
+       <p>Low: {Math.round((weatherData.main.temp_min-32)*5/9)}°</p>
+        <p>Wind Speed: {Math.round(weatherData.wind.speed/2.237)} m/s</p>
+     </div>
+    );
     
   }
 }
