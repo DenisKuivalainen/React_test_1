@@ -67,10 +67,10 @@ class WeatherDisplay extends React.Component {
          {weather.main} in {weatherData.name}
          <img src={iconUrl} alt={weatherData.description} />
        </h1>
-       <p>Current: {Math.round((weatherData.main.temp-32)*5/9)}°</p>
-        <p>High: {Math.round((weatherData.main.temp_max-32)*5/9)}°</p>
-       <p>Low: {Math.round((weatherData.main.temp_min-32)*5/9)}°</p>
-        <p>Wind Speed: {Math.round(weatherData.wind.speed/2.237)} m/s</p>
+       <p>Current: {((weatherData.main.temp-32)*5/9).toFixed(2)} C°</p>
+        <p>High: {((weatherData.main.temp_max-32)*5/9).toFixed(2)} C°</p>
+       <p>Low: {((weatherData.main.temp_min-32)*5/9).toFixed(2)} C°</p>
+        <p>Wind Speed: {(weatherData.wind.speed/2.237).toFixed(1)} m/s</p>
      </div>
     );
     
